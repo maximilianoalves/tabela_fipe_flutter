@@ -5,3 +5,5 @@ Aplicativo construido utilizar flutter para estudos sobre a linguagem, desenvolv
 ## Imagens do aplicativo.
 
 ![Home](images/home.png?raw=true "Home")
+![Consulta](images/consulta.png?raw=true "Consulta")
+![Listagem](images/listagem.png?raw=true "Listagem")
