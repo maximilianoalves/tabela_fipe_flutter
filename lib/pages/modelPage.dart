@@ -62,6 +62,7 @@ class _ModelPageState extends State<ModelPage> {
                     child: ListTile(
                       title: Text(
                         snapshot.data[index].fipeName??'Nome não informado',
+                        key: Key('model-${snapshot.data[index].fipeName}'),
                         style: TextStyle(
                           fontWeight: FontWeight.w600
                         ),
@@ -78,9 +79,13 @@ class _ModelPageState extends State<ModelPage> {
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
                   Icon(Icons.announcement, size: 50,),
-                  Text("Impossível buscar suas informações.", style: TextStyle(
-                    fontSize: 20
-                  ),),
+                  Text(
+                    "Impossível buscar suas informações.", 
+                    key: Key('error-message'),
+                    style: TextStyle(
+                      fontSize: 20
+                    ),
+                  ),
                 ],
               ),
             );

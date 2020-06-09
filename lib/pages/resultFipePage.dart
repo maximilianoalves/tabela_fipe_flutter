@@ -48,7 +48,9 @@ class _ResultFipePageState extends State<ResultFipePage> {
             return Card(
               elevation: 3,
               child: ListTile(
-                title: Text( 'Veículo: ${snapshot.data.name}',
+                title: Text( 
+                  'Veículo: ${snapshot.data.name}',
+                  key: Key('nome'),
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 22,
@@ -60,25 +62,33 @@ class _ResultFipePageState extends State<ResultFipePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      Text('Ano Modelo: ${snapshot.data.anoModelo}',
+                      Text(
+                        'Ano Modelo: ${snapshot.data.anoModelo}',
+                        key: Key('ano-modelo'),
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 18,
                         ),
                       ),
-                      Text('Combustível: ${snapshot.data.combustivel}',
+                      Text(
+                        'Combustível: ${snapshot.data.combustivel}',
+                        key: Key('combustivel'),
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 18,
                         ),
                       ),
-                      Text('Marca: ${snapshot.data.marca}',
+                      Text(
+                        'Marca: ${snapshot.data.marca}',
+                        key: Key('marca'),
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 18,
                         ),
                       ),
-                      Text('Valor: ${snapshot.data.preco}', 
+                      Text(
+                        'Valor: ${snapshot.data.preco}', 
+                        key: Key('preco'),
                         style: TextStyle(
                           fontWeight: FontWeight.w800,
                           fontSize: 20,
@@ -86,7 +96,9 @@ class _ResultFipePageState extends State<ResultFipePage> {
                         ),
                       ),
                       Padding(padding: EdgeInsets.only(top: 36.0),
-                        child: Text('Referência: ${snapshot.data.referencia}',
+                        child: Text(
+                          'Referência: ${snapshot.data.referencia}',
+                          key: Key('referencia'),
                           style: TextStyle(
                             fontWeight: FontWeight.w300,
                             fontSize: 14,
@@ -105,9 +117,13 @@ class _ResultFipePageState extends State<ResultFipePage> {
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
                   Icon(Icons.announcement, size: 50,),
-                  Text("Impossível buscar suas informações.", style: TextStyle(
-                    fontSize: 20
-                  ),),
+                  Text(
+                    'Impossível buscar suas informações.', 
+                    key: Key('error-message'),
+                    style: TextStyle(
+                      fontSize: 20
+                    ),
+                  ),
                 ],
               ),
             );

@@ -34,6 +34,7 @@ class HomePage extends StatelessWidget {
               width: 300.0,
               height: 100.0,
               child: RaisedButton(
+                key: Key('btn-carros'),
                 onPressed: () {
                   Navigator.push(
                     context, 
@@ -52,11 +53,13 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
+            //button motos
             Container(
               padding: EdgeInsets.only(top: 15),
               width: 300.0,
               height: 100.0,
               child: RaisedButton(
+                key: Key('btn-motos'),
                 onPressed: () {
                   Navigator.push(
                     context, 
@@ -75,11 +78,13 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
+            //button caminhoes
             Container(
               padding: EdgeInsets.only(top: 15),
               width: 300.0,
               height: 100.0,
               child: RaisedButton(
+                key: Key('btn-caminhoes'),
                 onPressed: () {
                   Navigator.push(
                     context, 

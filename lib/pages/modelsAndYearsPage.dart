@@ -66,6 +66,7 @@ class _ModelAndYearsPageState extends State<ModelAndYearsPage> {
                     child: ListTile(
                       title: Text(
                         snapshot.data[index].name,
+                        key: Key('modelsAndYears-${snapshot.data[index].name}'),
                         style: TextStyle(
                           fontWeight: FontWeight.w600
                         ),
@@ -82,9 +83,13 @@ class _ModelAndYearsPageState extends State<ModelAndYearsPage> {
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
                   Icon(Icons.announcement, size: 50,),
-                  Text("Impossível buscar suas informações.", style: TextStyle(
-                    fontSize: 20
-                  ),),
+                  Text(
+                    "Impossível buscar suas informações.",
+                    key: Key('error-message'),
+                    style: TextStyle(
+                      fontSize: 20
+                    ),
+                  ),
                 ],
               ),
             );
