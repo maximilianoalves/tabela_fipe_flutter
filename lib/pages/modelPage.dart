@@ -72,7 +72,18 @@ class _ModelPageState extends State<ModelPage> {
               },
             );
           } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  Icon(Icons.announcement, size: 50,),
+                  Text("Impossível buscar suas informações.", style: TextStyle(
+                    fontSize: 20
+                  ),),
+                ],
+              ),
+            );
           }
 
           // By default, show a loading spinner.
