@@ -4,17 +4,17 @@ import 'package:tabela_fipe_flutter/service/fipeService.dart';
 
 class ResultFipePage extends StatefulWidget {
   final String type;
+  final String brandId;
   final String modelId;
-  final String modelsAndYearsId;
-  final String modelAndYearId;
+  final String fuelAndYearsId;
   final String modelName;
 
   const ResultFipePage({
     Key key, 
     @required this.type, 
-    @required this.modelId, 
-    @required this.modelsAndYearsId, 
-    @required this.modelAndYearId,
+    @required this.brandId,
+    @required this.modelId,
+    @required this.fuelAndYearsId,
     @required this.modelName
   }) : super(key: key);
 
@@ -31,9 +31,9 @@ class _ResultFipePageState extends State<ResultFipePage> {
     super.initState();
     futureCar = FipeService().getResultFipe(
       widget.type.toLowerCase(), 
-      widget.modelId.toString(), 
-      widget.modelsAndYearsId, 
-      widget.modelAndYearId
+      widget.brandId.toString(),
+      widget.modelId,
+      widget.fuelAndYearsId
     );
   }
 

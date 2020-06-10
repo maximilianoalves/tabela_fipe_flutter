@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
                   Navigator.push(
                     context, 
                     MaterialPageRoute(
-                      builder: (BuildContext context) => BrandPage(title: 'carros')
+                      builder: (BuildContext context) => BrandPage(type: 'carros')
                     )
                   );
                 },
@@ -47,7 +47,10 @@ class HomePage extends StatelessWidget {
                 child: Column( 
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text('Carros', style: TextStyle(fontSize: 20),),
+                    Text(
+                      'Carros',
+                      key: Key('btn-text-carros'),
+                      style: TextStyle(fontSize: 20),),
                     Icon(Icons.directions_car)
                   ], 
                 ),
@@ -64,7 +67,7 @@ class HomePage extends StatelessWidget {
                   Navigator.push(
                     context, 
                     MaterialPageRoute(
-                      builder: (BuildContext context) => BrandPage(title: 'motos')
+                      builder: (BuildContext context) => BrandPage(type: 'motos')
                     )
                   );
                 },
@@ -72,7 +75,10 @@ class HomePage extends StatelessWidget {
                 child: Column( 
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text('Motos', style: TextStyle(fontSize: 20),),
+                    Text(
+                      'Motos',
+                      key: Key('btn-text-motos'),
+                      style: TextStyle(fontSize: 20),),
                     Icon(Icons.motorcycle)
                   ], 
                 ),
@@ -89,7 +95,7 @@ class HomePage extends StatelessWidget {
                   Navigator.push(
                     context, 
                     MaterialPageRoute(
-                      builder: (BuildContext context) => BrandPage(title: 'caminhoes')
+                      builder: (BuildContext context) => BrandPage(type: 'caminhoes')
                     )
                   );
                 },
@@ -97,7 +103,10 @@ class HomePage extends StatelessWidget {
                 child: Column( 
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text('Caminhões', style: TextStyle(fontSize: 20),),
+                    Text(
+                      'Caminhões',
+                      key: Key('btn-text-caminhoes'),
+                      style: TextStyle(fontSize: 20),),
                     Icon(Icons.local_shipping)
                   ], 
                 ),

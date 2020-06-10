@@ -1,21 +1,19 @@
 import 'dart:async';
-import 'dart:convert';
 
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:tabela_fipe_flutter/models/carModel.dart';
-import 'package:tabela_fipe_flutter/pages/modelsAndYearsPage.dart';
+import 'package:tabela_fipe_flutter/pages/fuelAndYears.dart';
 import 'package:tabela_fipe_flutter/service/fipeService.dart';
 
 class ModelPage extends StatefulWidget {
-  final int modelId;
+  final int brandId;
   final String modelName;
   final String type;
 
   ModelPage(
     {
       Key key,
-      @required this.modelId,
+      @required this.brandId,
       @required this.modelName,
       @required this.type
     }) : super(key: key);
@@ -32,7 +30,7 @@ class _ModelPageState extends State<ModelPage> {
     super.initState();
     futureCarModel = FipeService().getModels(
       widget.type.toLowerCase(), 
-      widget.modelId.toString()
+      widget.brandId.toString()
     );
   }
 
@@ -50,9 +48,9 @@ class _ModelPageState extends State<ModelPage> {
                 return new GestureDetector(
                   onTap: () => Navigator.push(
                     context, 
-                    MaterialPageRoute(builder: (BuildContext context) => ModelAndYearsPage(
-                      modelAndYearsId: snapshot.data[index].id,
-                      modelId: widget.modelId,
+                    MaterialPageRoute(builder: (BuildContext context) => FuelAndYearsPage(
+                      modelId: snapshot.data[index].id,
+                      brandId: widget.brandId,
                       modelName: snapshot.data[index].name,
                       type: widget.type, 
                     ))
@@ -62,7 +60,7 @@ class _ModelPageState extends State<ModelPage> {
                     child: ListTile(
                       title: Text(
                         snapshot.data[index].fipeName??'Nome não informado',
-                        key: Key('model-${snapshot.data[index].fipeName}'),
+                        key: Key('model-$index'),
                         style: TextStyle(
                           fontWeight: FontWeight.w600
                         ),
