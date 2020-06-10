@@ -46,6 +46,7 @@ class _FuelAndYearsPageState extends State<FuelAndYearsPage> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
+              padding: EdgeInsets.all(10.0),
               itemCount: snapshot.data.length,
               itemBuilder: (_, index) {
                 return new GestureDetector(

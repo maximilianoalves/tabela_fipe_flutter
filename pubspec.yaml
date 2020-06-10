@@ -21,6 +21,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.2
+  share: ^0.6.2+3
 
 dev_dependencies:
   flutter_driver:

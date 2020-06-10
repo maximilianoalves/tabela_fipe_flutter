@@ -34,48 +34,48 @@ class _BrandPageState extends State<BrandPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(this.widget.type.toUpperCase()),),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 5),
-            child: TextField(
-              decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(15.0),
-                  prefixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(5.0))
+      body: FutureBuilder<List<Brand>>(
+        future: futureFilteredBrand,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Column (
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 5),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(15.0),
+                        prefixIcon: Icon(Icons.search),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(5.0))
+                        ),
+                        hintText: 'Pesquisar por marcas'
+                    ),
+                    onChanged: (string) {
+                      setState(() {
+                        futureFilteredBrand = futureBrand.then((value) {
+                          return value.where((el) => (
+                              el.name.toLowerCase().contains(string.toLowerCase()))).toList();
+                        });
+                      });
+                    },
                   ),
-                  hintText: 'Pesquisar por marcas'
-              ),
-              onChanged: (string) {
-                setState(() {
-                  futureFilteredBrand = futureBrand.then((value) {
-                    return value.where((el) => (
-                      el.name.toLowerCase().contains(string.toLowerCase()))).toList();
-                  });
-                });
-              },
-            ),
-          ),
-          Expanded(
-            child: FutureBuilder<List<Brand>>(
-            future: futureFilteredBrand,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return ListView.builder(
-                  padding: EdgeInsets.all(10.0),
-                  itemCount: snapshot.data.length,
-                  itemBuilder: (_, index) {
-                    return new GestureDetector(
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (BuildContext context) => ModelPage(
-                              type: widget.type,
-                              brandId: snapshot.data[index].id,
-                              modelName: snapshot.data[index].name
-                          ))
-                      ),
-                      child: Card(
+                ),
+                Expanded (
+                  child: ListView.builder(
+                    padding: EdgeInsets.all(10.0),
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (_, index) {
+                      return new GestureDetector(
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (BuildContext context) => ModelPage(
+                                type: widget.type,
+                                brandId: snapshot.data[index].id,
+                                modelName: snapshot.data[index].name
+                            ))
+                        ),
+                        child: Card(
                           elevation: 2,
                           child: ListTile(
                             title: Text(
@@ -86,36 +86,37 @@ class _BrandPageState extends State<BrandPage> {
                               ),
                             ),
                           )
-                      ),
-                    );
-                  },
-                );
-              } else if (snapshot.hasError) {
-                return Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
-                    children: <Widget>[
-                      Icon(Icons.announcement, size: 50,),
-                      Text(
-                        "Impossível buscar suas informações.",
-                        key: Key('error-message'),
-                        style: TextStyle(
-                            fontSize: 20
                         ),
-                      ),
-                    ],
+                      );
+                    }
                   ),
-                );
-              }
+                )
+              ],
+            );
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  Icon(Icons.announcement, size: 50,),
+                  Text(
+                    "Impossível buscar suas informações.",
+                    key: Key('error-message'),
+                    style: TextStyle(
+                        fontSize: 20
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }
 
-              // By default, show a loading spinner.
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }),
-          )
-        ],
+          // By default, show a loading spinner.
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        },
       )
     );
   }
