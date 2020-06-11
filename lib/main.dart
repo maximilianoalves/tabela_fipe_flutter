@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tabela_fipe_flutter/pages/brandPage.dart';
+import 'package:tabela_fipe_flutter/pages/favoritePage.dart';
 
 void main() => runApp(App());
 
@@ -23,6 +24,17 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Tabela FIPE"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.favorite),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (BuildContext context) => FavoritePage())
+              );
+            },
+          )
+        ],
       ),
       body: Center(
         child: new Column(
@@ -34,11 +46,12 @@ class HomePage extends StatelessWidget {
               width: 300.0,
               height: 100.0,
               child: RaisedButton(
+                key: Key('btn-carros'),
                 onPressed: () {
                   Navigator.push(
                     context, 
                     MaterialPageRoute(
-                      builder: (BuildContext context) => BrandPage(title: 'carros')
+                      builder: (BuildContext context) => BrandPage(type: 'carros')
                     )
                   );
                 },
@@ -46,22 +59,27 @@ class HomePage extends StatelessWidget {
                 child: Column( 
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text('Carros', style: TextStyle(fontSize: 20),),
-                    Icon(Icons.directions_car)
+                    Text(
+                      'Carros',
+                      key: Key('btn-text-carros'),
+                      style: TextStyle(fontSize: 20, color: Colors.white)),
+                    Icon(Icons.directions_car, color: Colors.white,)
                   ], 
                 ),
               ),
             ),
+            //button motos
             Container(
               padding: EdgeInsets.only(top: 15),
               width: 300.0,
               height: 100.0,
               child: RaisedButton(
+                key: Key('btn-motos'),
                 onPressed: () {
                   Navigator.push(
                     context, 
                     MaterialPageRoute(
-                      builder: (BuildContext context) => BrandPage(title: 'motos')
+                      builder: (BuildContext context) => BrandPage(type: 'motos')
                     )
                   );
                 },
@@ -69,22 +87,27 @@ class HomePage extends StatelessWidget {
                 child: Column( 
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text('Motos', style: TextStyle(fontSize: 20),),
-                    Icon(Icons.motorcycle)
+                    Text(
+                      'Motos',
+                      key: Key('btn-text-motos'),
+                      style: TextStyle(fontSize: 20, color: Colors.white),),
+                    Icon(Icons.motorcycle, color: Colors.white,)
                   ], 
                 ),
               ),
             ),
+            //button caminhoes
             Container(
               padding: EdgeInsets.only(top: 15),
               width: 300.0,
               height: 100.0,
               child: RaisedButton(
+                key: Key('btn-caminhoes'),
                 onPressed: () {
                   Navigator.push(
                     context, 
                     MaterialPageRoute(
-                      builder: (BuildContext context) => BrandPage(title: 'caminhoes')
+                      builder: (BuildContext context) => BrandPage(type: 'caminhoes')
                     )
                   );
                 },
@@ -92,8 +115,11 @@ class HomePage extends StatelessWidget {
                 child: Column( 
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text('Caminhões', style: TextStyle(fontSize: 20),),
-                    Icon(Icons.local_shipping)
+                    Text(
+                      'Caminhões',
+                      key: Key('btn-text-caminhoes'),
+                      style: TextStyle(fontSize: 20, color: Colors.white,),),
+                    Icon(Icons.local_shipping, color: Colors.white,)
                   ], 
                 ),
               ),

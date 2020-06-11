@@ -1,41 +1,39 @@
 import 'dart:async';
-import 'dart:convert';
 
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:tabela_fipe_flutter/models/carModelsAndYears.dart';
+import 'package:tabela_fipe_flutter/models/carFuelAndYears.dart';
 import 'package:tabela_fipe_flutter/pages/resultFipePage.dart';
 import 'package:tabela_fipe_flutter/service/fipeService.dart';
 
-class ModelAndYearsPage extends StatefulWidget {
+class FuelAndYearsPage extends StatefulWidget {
   final String modelName;
-  final int modelId;
-  final String modelAndYearsId;
+  final int brandId;
+  final String modelId;
   final String type;
 
-  const ModelAndYearsPage({
+  const FuelAndYearsPage({
     Key key, 
     @required this.modelName, 
-    @required this.modelId, 
-    @required this.modelAndYearsId,
+    @required this.brandId,
+    @required this.modelId,
     @required this.type
   }) : super(key: key);
 
 
   @override
-  _ModelAndYearsPageState createState() => _ModelAndYearsPageState();
+  _FuelAndYearsPageState createState() => _FuelAndYearsPageState();
 }
 
-class _ModelAndYearsPageState extends State<ModelAndYearsPage> {
-  Future<List<CarModelsAndYears>> futureCarModelsAndYears;
+class _FuelAndYearsPageState extends State<FuelAndYearsPage> {
+  Future<List<CarFuelAndYears>> futureCarFuelAndYears;
 
   @override
   void initState() { 
     super.initState();
-    futureCarModelsAndYears = FipeService().getModelsAndYears(
+    futureCarFuelAndYears = FipeService().getFuelAndYears(
       widget.type, 
-      widget.modelId.toString(), 
-      widget.modelAndYearsId
+      widget.brandId.toString(),
+      widget.modelId
     );
   }
 
@@ -43,11 +41,12 @@ class _ModelAndYearsPageState extends State<ModelAndYearsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(this.widget.modelName),),
-      body: FutureBuilder<List<CarModelsAndYears>>(
-        future: futureCarModelsAndYears,
+      body: FutureBuilder<List<CarFuelAndYears>>(
+        future: futureCarFuelAndYears,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
+              padding: EdgeInsets.all(10.0),
               itemCount: snapshot.data.length,
               itemBuilder: (_, index) {
                 return new GestureDetector(
@@ -55,9 +54,9 @@ class _ModelAndYearsPageState extends State<ModelAndYearsPage> {
                     context, 
                     MaterialPageRoute(builder: (BuildContext context) => ResultFipePage(
                       type: widget.type,
-                      modelId: widget.modelId.toString(),
-                      modelsAndYearsId: widget.modelAndYearsId,
-                      modelAndYearId: snapshot.data[index].id,
+                      brandId: widget.brandId.toString(),
+                      modelId: widget.modelId,
+                      fuelAndYearsId: snapshot.data[index].id,
                       modelName: snapshot.data[index].name,
                     ))
                   ),
@@ -66,6 +65,7 @@ class _ModelAndYearsPageState extends State<ModelAndYearsPage> {
                     child: ListTile(
                       title: Text(
                         snapshot.data[index].name,
+                        key: Key('fuelAndYears-$index'),
                         style: TextStyle(
                           fontWeight: FontWeight.w600
                         ),
@@ -82,9 +82,13 @@ class _ModelAndYearsPageState extends State<ModelAndYearsPage> {
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
                   Icon(Icons.announcement, size: 50,),
-                  Text("Impossível buscar suas informações.", style: TextStyle(
-                    fontSize: 20
-                  ),),
+                  Text(
+                    "Impossível buscar suas informações.",
+                    key: Key('error-message'),
+                    style: TextStyle(
+                      fontSize: 20
+                    ),
+                  ),
                 ],
               ),
             );
