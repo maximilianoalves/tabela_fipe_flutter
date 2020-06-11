@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 import 'package:tabela_fipe_flutter/models/car.dart';
+import 'package:tabela_fipe_flutter/models/favoriteModel.dart';
+import 'package:tabela_fipe_flutter/service/favoriteDatabaseService.dart';
 import 'package:tabela_fipe_flutter/service/fipeService.dart';
 
 class ResultFipePage extends StatefulWidget {
@@ -189,6 +191,19 @@ class _ResultFipePageState extends State<ResultFipePage> {
                       ),
                       ButtonBar(
                         children: <Widget>[
+                          FlatButton(
+                            child: Text('ADICIONAR AOS FAVORITOS'),
+                            onPressed: () async {
+                              await FavoriteDatabaseService.db.addFavorite(new FavoriteModel(
+                                name: snapshot.data.name,
+                                price: snapshot.data.preco,
+                                url: 'url'
+                              ));
+                              Scaffold.of(context).showSnackBar(SnackBar(
+                                content: Text('Adicionado aos favoritos com sucesso'),
+                              ));
+                            },
+                          ),
                           FlatButton(
                             child: Icon(Icons.share),
                             onPressed: () {

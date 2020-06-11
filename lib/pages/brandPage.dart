@@ -68,20 +68,21 @@ class _BrandPageState extends State<BrandPage> {
                     itemBuilder: (_, index) {
                       return new GestureDetector(
                         onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (BuildContext context) => ModelPage(
-                                type: widget.type,
-                                brandId: snapshot.data[index].id,
-                                modelName: snapshot.data[index].name
-                            ))
+                          context,
+                          MaterialPageRoute(builder: (BuildContext context) => ModelPage(
+                            type: widget.type,
+                            brandId: snapshot.data[index].id,
+                            modelName: snapshot.data[index].name
+                          ))
                         ),
                         child: Card(
                           elevation: 2,
                           child: ListTile(
-                            title: Text(
-                              snapshot.data[index].name,
-                              key: Key('brand-${snapshot.data[index].name.toLowerCase()}'),
-                              style: TextStyle(
+                            title:
+                              Text(
+                                snapshot.data[index].name,
+                                key: Key('brand-${snapshot.data[index].name.toLowerCase()}'),
+                                style: TextStyle(
                                   fontWeight: FontWeight.w600
                               ),
                             ),

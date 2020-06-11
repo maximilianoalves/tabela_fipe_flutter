@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tabela_fipe_flutter/pages/brandPage.dart';
+import 'package:tabela_fipe_flutter/pages/favoritePage.dart';
 
 void main() => runApp(App());
 
@@ -23,6 +24,17 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Tabela FIPE"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.favorite),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (BuildContext context) => FavoritePage())
+              );
+            },
+          )
+        ],
       ),
       body: Center(
         child: new Column(
@@ -50,8 +62,8 @@ class HomePage extends StatelessWidget {
                     Text(
                       'Carros',
                       key: Key('btn-text-carros'),
-                      style: TextStyle(fontSize: 20),),
-                    Icon(Icons.directions_car)
+                      style: TextStyle(fontSize: 20, color: Colors.white)),
+                    Icon(Icons.directions_car, color: Colors.white,)
                   ], 
                 ),
               ),
@@ -78,8 +90,8 @@ class HomePage extends StatelessWidget {
                     Text(
                       'Motos',
                       key: Key('btn-text-motos'),
-                      style: TextStyle(fontSize: 20),),
-                    Icon(Icons.motorcycle)
+                      style: TextStyle(fontSize: 20, color: Colors.white),),
+                    Icon(Icons.motorcycle, color: Colors.white,)
                   ], 
                 ),
               ),
@@ -106,8 +118,8 @@ class HomePage extends StatelessWidget {
                     Text(
                       'Caminhões',
                       key: Key('btn-text-caminhoes'),
-                      style: TextStyle(fontSize: 20),),
-                    Icon(Icons.local_shipping)
+                      style: TextStyle(fontSize: 20, color: Colors.white,),),
+                    Icon(Icons.local_shipping, color: Colors.white,)
                   ], 
                 ),
               ),
