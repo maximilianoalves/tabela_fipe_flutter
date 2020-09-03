@@ -64,22 +64,29 @@ class _ResultFipePageState extends State<ResultFipePage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Text(
-                                  '${snapshot.data.marca} - ',
-                                  key: Key('marca'),
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 22,
-                                  ),
-                                ),
-                                Text(
-                                  '${snapshot.data.name}',
-                                  key: Key('modelo'),
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 22,
-                                  ),
-                                ),
+                               Wrap(
+                                 direction: Axis.vertical,
+                                 spacing: 5.0,
+                                 runSpacing: 5.0,
+                                 children: <Widget>[
+                                   Text(
+                                     '${snapshot.data.marca} - ',
+                                     key: Key('text-marca-titulo'),
+                                     style: TextStyle(
+                                       fontWeight: FontWeight.w600,
+                                       fontSize: 22,
+                                     ),
+                                   ),
+                                   Text(
+                                     '${snapshot.data.name}',
+                                     key: Key('text-modelo'),
+                                     style: TextStyle(
+                                       fontWeight: FontWeight.w600,
+                                       fontSize: 22,
+                                     ),
+                                   ),
+                                 ],
+                               )
                               ],
                             ),
                           ),
@@ -102,7 +109,7 @@ class _ResultFipePageState extends State<ResultFipePage> {
                                     ),
                                     Text(
                                       '${snapshot.data.anoModelo}',
-                                      key: Key('${snapshot.data.anoModelo}'),
+                                      key: Key('text-ano-modelo'),
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 18,
@@ -123,7 +130,7 @@ class _ResultFipePageState extends State<ResultFipePage> {
                                     ),
                                     Text(
                                       '${snapshot.data.combustivel}',
-                                      key: Key('${snapshot.data.combustivel}'),
+                                      key: Key('text-combustivel'),
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 18,
@@ -144,7 +151,7 @@ class _ResultFipePageState extends State<ResultFipePage> {
                                     ),
                                     Text(
                                       '${snapshot.data.marca}',
-                                      key: Key('${snapshot.data.marca}'),
+                                      key: Key('text-marca'),
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 18,
@@ -165,7 +172,7 @@ class _ResultFipePageState extends State<ResultFipePage> {
                                     ),
                                     Text(
                                       '${snapshot.data.preco}',
-                                      key: Key('${snapshot.data.preco}'),
+                                      key: Key('text-valor'),
                                       style: TextStyle(
                                           fontWeight: FontWeight.w800,
                                           fontSize: 20,
@@ -178,7 +185,7 @@ class _ResultFipePageState extends State<ResultFipePage> {
                                 Padding(padding: EdgeInsets.only(top: 35.0),
                                   child: Text(
                                     'Referência: ${snapshot.data.referencia}',
-                                    key: Key('referencia'),
+                                    key: Key('text-referencia'),
                                     style: TextStyle(
                                       fontWeight: FontWeight.w300,
                                       fontSize: 14,

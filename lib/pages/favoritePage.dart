@@ -33,7 +33,7 @@ class _FavoritePageState extends State<FavoritePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
-                    Icon(Icons.announcement, size: 50,),
+                    Icon(Icons.warning, size: 50,),
                     Text(
                       "Nenhum favorito cadastrado.",
                       key: Key('error-message'),
@@ -91,7 +91,7 @@ class _FavoritePageState extends State<FavoritePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
-                  Icon(Icons.announcement, size: 50,),
+                  Icon(Icons.warning, size: 50,),
                   Text(
                     "Nenhum favorito cadastrado.",
                     key: Key('error-message'),

@@ -24,6 +24,12 @@ dependencies:
   share: ^0.6.2+3
   path_provider:
   sqflite:
+  flutter_launcher_icons:
+
+flutter_icons:
+  ios: true
+  android: "launcher_icon"
+  image_path: "lib/assets/icon.png"
 
 dev_dependencies:
   flutter_driver:
