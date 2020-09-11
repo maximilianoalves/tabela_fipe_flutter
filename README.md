@@ -7,3 +7,7 @@ Aplicativo construido utilizar flutter para estudos sobre a linguagem, desenvolv
 ![Home](images/home.png?raw=true "Home")
 ![Consulta](images/consulta.png?raw=true "Consulta")
 ![Listagem](images/listagem.png?raw=true "Listagem")
+
+
+### Run integration tests
+`flutter driver --target=test_driver/app.dart`
