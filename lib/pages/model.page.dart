@@ -53,7 +53,7 @@ class _ModelPageState extends State<ModelPage> {
   Widget _buildSearchField() {
     return SearchBox(
       onSearchPress: _onSearchPressed,
-      hintText: 'Search for models',
+      hintText: 'Buscar por modelos',
     );
   }
 

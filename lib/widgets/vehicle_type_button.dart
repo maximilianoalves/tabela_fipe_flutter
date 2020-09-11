@@ -25,19 +25,19 @@ class VehicleTypeButton extends StatelessWidget {
     switch (vehicleType) {
       case VehicleType.motorcycles:
         buttonKey = Key('btn-motorcycles');
-        vehicleTypeName = describeEnum(VehicleType.motorcycles);
+        vehicleTypeName = 'Motos';
         buttonTextKey = Key('btn-text-motorcycles');
         icon = Icons.motorcycle;
         break;
       case VehicleType.cars:
         buttonKey = Key('btn-cars');
-        vehicleTypeName = describeEnum(VehicleType.cars);
+        vehicleTypeName = 'Carros';
         buttonTextKey = Key('btn-text-cars');
         icon = Icons.directions_car;
         break;
       case VehicleType.trucks:
         buttonKey = Key('btn-trucks');
-        vehicleTypeName = describeEnum(VehicleType.trucks);
+        vehicleTypeName = 'Caminhões';
         buttonTextKey = Key('btn-text-trucks');
         icon = Icons.local_shipping;
         break;

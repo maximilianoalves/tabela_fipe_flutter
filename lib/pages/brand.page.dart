@@ -46,7 +46,7 @@ class _BrandPageState extends State<BrandPage> {
   Widget _buildSearchField() {
     return SearchBox(
       onSearchPress: _onSearchPressed,
-      hintText: 'Search for brands',
+      hintText: 'Buscar por marcas',
     );
   }
 
