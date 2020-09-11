@@ -138,7 +138,7 @@ packages:
     source: hosted
     version: "0.7.5"
   flutter_test:
-    dependency: transitive
+    dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"

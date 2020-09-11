@@ -4,7 +4,12 @@ class Brand {
   String fipeName;
   String name;
 
-  Brand({this.key, this.id, this.fipeName, this.name});
+  Brand({
+    this.key,
+    this.id,
+    this.fipeName,
+    this.name,
+  });
 
   factory Brand.fromJson(Map<String, dynamic> json) {
     return Brand(

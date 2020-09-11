@@ -1,10 +1,9 @@
-
 import 'dart:io';
 
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:tabela_fipe_flutter/models/favoriteModel.dart';
+import 'package:tabela_fipe_flutter/models/favorite_model.model.dart';
 
 class FavoriteDatabaseService {
   FavoriteDatabaseService._();
@@ -14,26 +13,22 @@ class FavoriteDatabaseService {
 
   Future<Database> get database async {
     if (_database != null) return _database;
-    _database = await getDatabaseInstace();
+    _database = await getDatabaseInstance();
     return _database;
   }
 
-  Future<Database> getDatabaseInstace() async {
+  Future<Database> getDatabaseInstance() async {
     Directory directory = await getApplicationDocumentsDirectory();
     String path = join(directory.path, "FIPEfav.db");
 
-    return await openDatabase(
-      path,
-      version: 1,
-      onCreate: (Database db, int version) async {
-        await db.execute(
-          "CREATE TABLE Favorites ("
+    return await openDatabase(path, version: 1,
+        onCreate: (Database db, int version) async {
+      await db.execute("CREATE TABLE Favorites ("
           "id integer primary key AUTOINCREMENT,"
           "name TEXT,"
           "price TEXT,"
           "url TEXT"
-          ")"
-        );
+          ")");
     });
   }
 
@@ -56,14 +51,16 @@ class FavoriteDatabaseService {
 
   Future<FavoriteModel> getFavoriteWithId(int id) async {
     final db = await database;
-    var response = await db.query('Favorites', where: 'id = ?', whereArgs: [id]);
+    var response =
+        await db.query('Favorites', where: 'id = ?', whereArgs: [id]);
     return response.isNotEmpty ? FavoriteModel.fromMap(response.first) : null;
   }
 
   Future<List<FavoriteModel>> getAllFavorites() async {
     final db = await database;
     var response = await db.query("Favorites");
-    List<FavoriteModel> list = response.map((c) => FavoriteModel.fromMap(c)).toList();
+    List<FavoriteModel> list =
+        response.map((c) => FavoriteModel.fromMap(c)).toList();
     return list;
   }
 
@@ -76,5 +73,4 @@ class FavoriteDatabaseService {
     final db = await database;
     db.delete("Favorites");
   }
-
 }
