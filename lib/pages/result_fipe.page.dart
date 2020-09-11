@@ -100,7 +100,7 @@ class _ResultFipePageState extends State<ResultFipePage> {
                                   Row(
                                     children: <Widget>[
                                       Text(
-                                        'Year model: ',
+                                        'Ano: ',
                                         key: Key('ano-modelo'),
                                         style: TextStyle(
                                           fontWeight: FontWeight.w400,
@@ -120,7 +120,7 @@ class _ResultFipePageState extends State<ResultFipePage> {
                                   Row(
                                     children: <Widget>[
                                       Text(
-                                        'Fuel: ',
+                                        'Combustível: ',
                                         key: Key('combustivel'),
                                         style: TextStyle(
                                           fontWeight: FontWeight.w400,
@@ -141,7 +141,7 @@ class _ResultFipePageState extends State<ResultFipePage> {
                                   Row(
                                     children: <Widget>[
                                       Text(
-                                        'Brand: ',
+                                        'Marca: ',
                                         key: Key('marca'),
                                         style: TextStyle(
                                           fontWeight: FontWeight.w400,
@@ -162,7 +162,7 @@ class _ResultFipePageState extends State<ResultFipePage> {
                                   Row(
                                     children: <Widget>[
                                       Text(
-                                        'Value: ',
+                                        'Valor: ',
                                         key: Key('valor'),
                                         style: TextStyle(
                                           fontWeight: FontWeight.w400,
@@ -196,7 +196,7 @@ class _ResultFipePageState extends State<ResultFipePage> {
                         ButtonBar(
                           children: <Widget>[
                             FlatButton(
-                              child: Text('Add to favorites'),
+                              child: Text('Adicionar aos favoritos'),
                               onPressed: () async {
                                 await FavoriteDatabaseService.db.addFavorite(
                                     new FavoriteModel(
@@ -205,7 +205,7 @@ class _ResultFipePageState extends State<ResultFipePage> {
                                         url: 'url'));
                                 Scaffold.of(context).showSnackBar(SnackBar(
                                   content:
-                                      Text('Successfully added to favorites'),
+                                      Text('Adicionado com sucesso aos favoritos'),
                                 ));
                               },
                             ),

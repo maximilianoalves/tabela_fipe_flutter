@@ -10,7 +10,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'FIPE Table',
+      title: 'Tabela FIPE',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("FIPE Table"),
+        title: Text("Tabela FIPE"),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.favorite),

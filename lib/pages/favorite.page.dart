@@ -22,7 +22,7 @@ class _FavoritePageState extends State<FavoritePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Favorites'),
+        title: Text('Meus favoritos'),
       ),
       body: FutureBuilder<List<FavoriteModel>>(
         future: futureFavorite,
@@ -66,7 +66,7 @@ class _FavoritePageState extends State<FavoritePage> {
                                         TextStyle(fontWeight: FontWeight.w600),
                                   ),
                                   subtitle: Text(
-                                      'Value: ${snapshot.data[index].price}'),
+                                      'Valor: ${snapshot.data[index].price}'),
                                 )),
                           );
                         }),
