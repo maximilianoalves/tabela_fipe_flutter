@@ -10,20 +10,18 @@ class Car {
   String fipeCodigo;
   String key;
 
-  Car(
-    {
-      this.id,
-      this.anoModelo,
-      this.marca,
-      this.name,
-      this.veiculo,
-      this.preco,
-      this.combustivel,
-      this.referencia,
-      this.fipeCodigo,
-      this.key
-    }
-  );
+  Car({
+    this.id,
+    this.anoModelo,
+    this.marca,
+    this.name,
+    this.veiculo,
+    this.preco,
+    this.combustivel,
+    this.referencia,
+    this.fipeCodigo,
+    this.key,
+  });
 
   factory Car.fromJson(Map<String, dynamic> json) {
     return Car(

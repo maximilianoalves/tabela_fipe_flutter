@@ -24,21 +24,14 @@ void main() {
     test('- select cars button', () async {
       HomePage homePage = HomePage(driver);
 
-      expect(
-          await homePage.getTextBtnCars(),
-          equals('Carros')
-      );
-
+      expect(await homePage.getTextBtnCars(), equals('Cars'));
       await homePage.tapBtnCars();
     });
 
     test('- select brand cars', () async {
       BrandPage brandPage = BrandPage(driver);
 
-      expect(
-          await brandPage.getTextAudiBrand(),
-          equals('AUDI')
-      );
+      expect(await brandPage.getTextAudiBrand(), equals('AUDI'));
 
       await brandPage.tapBtnAudiBrand();
     });
@@ -68,16 +61,11 @@ void main() {
     test('-- validate result', () async {
       ResultFipePage resultFipePage = ResultFipePage(driver);
 
-      expect(
-          await resultFipePage.getTextCombustivel(),
-          equals('Gasolina')
-      );
-
-      //print(resultFipePage.getTextMarcaTitulo().toString());
-      //print(resultFipePage.getTextMarca().toString());
-      //print(resultFipePage.getTextAnoModelo());
-      //print(resultFipePage.getTextModelo());
-      //print(resultFipePage.getTextCombustivel());
+      expect(await resultFipePage.getTextCombustivel(), equals('Gasolina'));
+      expect(await resultFipePage.getTextMarca(), equals('Audi'));
+      expect(await resultFipePage.getTextModelo(), equals('100 2.8 V6'));
+      expect(await resultFipePage.getTextAnoModelo(), equals('1995'));
+      expect(await resultFipePage.getTextValor(), equals('R\$ 12.126,00'));
 
     });
 

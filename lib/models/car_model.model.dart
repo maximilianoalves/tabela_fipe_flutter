@@ -4,7 +4,12 @@ class CarModel {
   String fipeName;
   String name;
 
-  CarModel({this.key, this.id, this.fipeName, this.name});
+  CarModel({
+    this.key,
+    this.id,
+    this.fipeName,
+    this.name,
+  });
 
   factory CarModel.fromJson(Map<String, dynamic> json) {
     return CarModel(

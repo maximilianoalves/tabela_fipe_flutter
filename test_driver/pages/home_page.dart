@@ -1,8 +1,8 @@
 import 'package:flutter_driver/flutter_driver.dart';
 
 class HomePage {
-  final btnCars = find.byValueKey('btn-carros');
-  final btnCarsText = find.byValueKey('btn-text-carros');
+  final btnCars = find.byValueKey('btn-cars');
+  final btnCarsText = find.byValueKey('btn-text-cars');
 
 
   FlutterDriver _driver;
